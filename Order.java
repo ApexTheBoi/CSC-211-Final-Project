@@ -1,8 +1,16 @@
 import java.util.ArrayList;
-public class Order { //Purely for representing a customer's orde with methods for calculating totals
+import java.util.function.Function;
+
+@FunctionalInterface
+interface DiscountCalculator extends Function<Double, Double> {}
+
+@FunctionalInterface
+interface TaxCalculator extends Function<Double, Double> {}
+
+public class Order {
     
     private final Customer customer; //customer will never change on an order.
-    private final ArrayList<Product> productList; //a list of all a customer's products.
+    private final ArrayList<Product> productList; //a list of all a customer's products. Can stil call add() while final
     private double total;
 
     public Order(Customer customer){
@@ -38,7 +46,26 @@ public class Order { //Purely for representing a customer's orde with methods fo
         for (Product product : productList) {
             System.out.print(product.getName() + " | ");
         }
-        System.out.printf("\nTotal Price of The Order : $%.2f\n", total);
+        System.out.println("\nPrice before taxes and discount : $" + total);
+        System.out.printf("Total Price of The Order : $%.2f\n", calculateTotal());
+        
     }
-    
+
+    public double calculateTotal() {
+        DiscountCalculator discountStrategy;
+        if (customer.hasLoyaltyCard()) {
+            discountStrategy = price -> price * 0.9;
+        } else {
+            discountStrategy = price -> price;
+        }
+
+        double priceAfterDiscount = discountStrategy.apply(total);
+
+        double taxRate = 0.08;
+        TaxCalculator taxCalculator = price -> price * (1 + taxRate);
+        System.out.println("Tax is : " + priceAfterDiscount * taxRate);
+        double finalPrice = taxCalculator.apply(priceAfterDiscount);
+
+        return finalPrice;
+    }       
 }
