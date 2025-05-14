@@ -12,14 +12,14 @@ public class Customer extends User {
         hasLoyaltyCard = b;
     }
 
-    public void checkLoyaltyStatus(){
-        if(hasLoyaltyCard){
-            System.out.println("Has a loyalty card.");
-        }
-
-        else{
-            System.out.println("Does not have a loyalty card.");
-        }
+    public boolean hasLoyaltyCard(){
+        return hasLoyaltyCard;
     }
+
+    public void changeLoyaltyStatus(boolean b){
+        hasLoyaltyCard = b;
+    }
+
+    
 
 }
