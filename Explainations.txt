@@ -1,3 +1,54 @@
 Explainations for the Code:
 
-[Start Here] [Explain the Class, the methods, and what they do].
+Order Class:
+  The order class is assigned to a Customer Object, hence why the constructor passes in a customer object. 
+  Customer Object is final due to the customer not being able to change on a given order. You cannot hand one order to some other customer.
+  Methods in the class:
+    addProduct(Product P) : This method adds a product to the productList, which keeps track of all the current products in a user's cart.
+    removeProduct(Prodct P) : this method cycles through the productList looking for a product that shares the same name, then removes it. Aborts after one instance of that item is removed.
+    printOrder() : Prints a full description of the customer's order, including their name and all products in their cart.
+    calculateTotal() : Uses lambda expressions to calculate savings (from a loyalty card), shipping costs, and tax.
+
+Product Class:
+  The product class is made with 5 initial parameters: An ID, name, price, description, and brand for the item.
+  Methods in this class:
+    getName() : Returns the name of the product.
+    getPrice() : Returns the price of the product.
+    getBrand() : Returns the brand of the product.
+    toString() : Returns a printed version of the product's fields when printed in a System.out.print() statement.
+
+Electronic Class:
+  Product now has an additional field called voltageRequired, which is exclusive to the electronic class.
+  Methods in this class:
+    getVoltage() : Returns the volage of the electronic.
+
+Clothing Class:
+  Product now has an additional field called size, which denotes the size of the piece of clothing, exclusive to the clothing class.
+  Methods in this class:
+    getSize() : Returns the size of the clothing product.
+
+Grocery Class:
+  Product now has an additional field called department. This denotes what part of the grocery store it is found or produced in.
+  Methods in this class:
+    getDept() : Returns the department of the grocery item.
+
+User Class:
+  Users have 1 parameter, a String called name. User's only have a name.
+  Methods in this class:
+    getName() : Returns the name of the User.
+
+Administrator Class:
+  Administrators have a name and an ID. Furthermore they have access to sign people up, or take them off of loyalty cards.
+  Methods in this class:
+    signUp(Customer c) : Signs up a given customer for a loyalty card.
+    unenroll(Customer c) : Removes a customer's loyalty card.
+    getID() : Returns Administrator's id.
+
+Customer Class:
+  A customer has a name, and a loyalty card boolean.
+  Methods in this class:
+    hasLoyaltyCard() : Returns a boolean value depending on whether or not they own a loyalty card.
+    changeLoyaltyStatus(Boolean b) : Changes a customer's loyalty status to boolean b.
+  
+
+  
