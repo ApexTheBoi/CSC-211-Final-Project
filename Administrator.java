@@ -1,5 +1,5 @@
 public class Administrator extends User {
-    //I'm assuming that an Administrator can give people loyalty cards.
+    //I'm assuming that an Administrator can change prices and ID's. 
 
     private String AdminID;
 
