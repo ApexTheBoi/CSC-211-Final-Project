@@ -34,7 +34,7 @@ public class Main { //Concept: A simple prototype for an e-commerce platform foc
         O1.addProduct(P7);
         O1.printOrder();
 
-        Administrator A1 = new Administrator();
+        Administrator A1 = new Administrator("Burkley", "17824871");
         A1.signUp(C1);
         A1.signUp(C6);
         A1.unenroll(C4);
